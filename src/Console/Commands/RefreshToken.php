@@ -5,7 +5,7 @@ namespace BrandStudio\Instagram\Console\Commands;
 use Illuminate\Console\Command;
 use BrandStudio\Instagram\Facades\Instagram;
 
-class AccessToken extends Command
+class RefreshToken extends Command
 {
     /**
      * The name and signature of the console command.
