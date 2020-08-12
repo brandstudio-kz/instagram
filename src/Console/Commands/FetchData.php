@@ -39,17 +39,17 @@ class FetchData extends Command
     public function handle()
     {
         \Cache::forget('instagram_account');
-        \Cache::forget('instagram_followers');
+        // \Cache::forget('instagram_followers');
         \Cache::forget('instagram_posts');
 
         $this->info('Caching instagram account...');
         \Cache::rememberForever('instagram_account', function() {
             return Instagram::getAccount();
         });
-        $this->info('Caching instagram followers cnt...');
-        \Cache::rememberForever('instagram_followers', function() {
-            return Instagram::getFollowersCnt();
-        });
+        // $this->info('Caching instagram followers cnt...');
+        // \Cache::rememberForever('instagram_followers', function() {
+        //     return Instagram::getFollowersCnt();
+        // });
         $this->info('Caching instagram posts...');
         \Cache::rememberForever('instagram_posts', function() {
             return Instagram::getPosts();
