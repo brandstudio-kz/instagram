@@ -21,9 +21,8 @@ trait HasInstagramMedia
 
     public function getFollowersCnt()
     {
-        return $this->sendRequest('https://instagram.com/only.kazakhstan/', [
-            '__a' => 1,
-        ])['graphql']['user']['edge_followed_by']['count'];
+        $html = file_get_contents('https://instagram.com/only.kazakhstan/');
+        return str_replace('k', '', explode("Followers", explode("meta property=\"og:description\" content=\"", $html)[1])[0]);
     }
 
 }
