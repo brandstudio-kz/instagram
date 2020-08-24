@@ -22,7 +22,7 @@ trait HasInstagramMedia
         foreach(array_slice($data['data'] ?? [], 0, $this->config['posts_cnt']) as $post) {
             $posts[] = [
                 'permalink' => $post['permalink'],
-                'media_url' => $post['media_url'] == 'VIDEO' ? $post['thumbnail_url'] : $post['media_url'],
+                'media_url' => $post['media_type'] == 'VIDEO' ? $post['thumbnail_url'] : $post['media_url'],
             ];
         }
 
