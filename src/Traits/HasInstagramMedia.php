@@ -14,9 +14,19 @@ trait HasInstagramMedia
 
     public function getPosts()
     {
-        return $this->sendRequest('me/media', [
+        $data = $this->sendRequest('me/media', [
             'fields' => implode(',', ['id', 'media_type', 'media_url', 'permalink', 'thumbnail_url']),
         ]);
+
+        $posts = [];
+        foreach(array_slice($data['data'] ?? [], 0, $this->config['posts_cnt']) as $post) {
+            $posts[] = [
+                'permalink' => $post['permalink'],
+                'media_url' => $post['media_url'] == 'VIDEO' ? $post['thumbnail_url'] : $post['media_url'],
+            ];
+        }
+
+        return $posts;
     }
 
     public function getFollowersCnt()
