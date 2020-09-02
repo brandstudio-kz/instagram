@@ -33,7 +33,7 @@ trait HasInstagramToken
         }
 
         $response = $this->sendRequest('refresh_access_token', [
-            'grant_type' => 'ig_exchange_token',
+            'grant_type' => 'ig_refresh_token',
         ]);
         $this->setToken($response, 'long');
     }
